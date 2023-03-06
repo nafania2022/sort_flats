@@ -1,0 +1,5 @@
+venv/
+tele_bot/config.py
+info.txt
+tg_poster.py
+test.py
