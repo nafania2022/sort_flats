@@ -7,11 +7,11 @@ PASSWORD = 'postgresql'
 HOST = '127.0.0.1'
 
 
-def create_flats_table(name_table):
+def create_flats_table():
     with psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST) as conn:
         with conn.cursor() as cur:
-            cur.execute(f'''
-            CREATE TABLE IF NOT EXISTS {name_table} (
+            cur.execute('''
+            CREATE TABLE IF NOT EXISTS flats (
                 id serial PRIMARY KEY,
                 link CHARACTER VARYING(300) UNIQUE NOT NULL,
                 reference CHARACTER VARYING(30),
@@ -157,5 +157,12 @@ def get_filter_flats(sity_or_price, filter, is_archive=True):
 
 
 
-create_flats_table("premium_users")
-# create_flats_table("archive_flats")
+
+
+def test_insert(text):
+    with psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST) as conn:
+        with conn.cursor() as cur:
+            cur.execute("INSERT INTO test (text) VALUES (%s)", text )
+
+
+

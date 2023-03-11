@@ -1,9 +1,9 @@
 import schedule
 import time
 from constants import USED_PARSERS
-import db_client
 import tg_poster
 from datetime import datetime
+import db_client
 
 PARSE_EVERY_MINUTES = 1
 
@@ -21,10 +21,9 @@ def do_post_in_telegram():
         time.sleep(5)
     db_client.update_is_posted_state(list(map(lambda el: el[9], posts)))
     
-
 schedule.every(PARSE_EVERY_MINUTES).minutes.do(do_post_in_telegram)
 
 
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+while True:
+    schedule.run_pending()
+    time.sleep(1)

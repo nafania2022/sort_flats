@@ -40,18 +40,17 @@ async def start(message: types.Message):
     
 
 @dp.message_handler(Text(equals="Сортировка по городу"))
-async def filter_command(message: types.Message):
+async def filter_command(message: types.Message):   
         button = menu(LIST_SITY) 
         msg = await bot.send_message(chat_id=REPORT_GROUP_ID,
-                               text= 'Выберите город',
-                               reply_markup=button)
+                            text= 'Выберите город',
+                            reply_markup=button)
         await message.delete()
         await asyncio.sleep(10)
         try:
             await msg.delete()
         except Exception:
             print("Сообщение уже удалено")
-       
         
           
 @dp.message_handler(Text(equals="Главное меню"))
@@ -98,7 +97,18 @@ async def filter_flats_sity(message: types.Message):
             if len(flats) > 0:
                 await post_tg(message,flats)
             await message.delete()
-            
+
+def menu(list_button=None):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
+    buttons = [types.KeyboardButton(x) for x in list_button]
+    markup.add(*buttons)   
+    return markup
+
+def sity_list(sity_list):
+    markup = types.InlineKeyboardMarkup(row_width=3)
+    buttons = [types.InlineKeyboardButton(text=x, callback_data=x) for x in sity_list]
+    markup.add(*buttons)
+    return markup          
             
             
 

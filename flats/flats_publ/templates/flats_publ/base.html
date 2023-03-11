@@ -39,22 +39,23 @@
 <div class="container py-3">
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show" style="">
+      {% comment %} <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show" style="">
         <div class="position-sticky pt-3 sidebar-sticky">
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Все категории</a>
             </li>
-              {% comment %} {% for cat in cat %}
-              {% if cat.products__count > 0  %}
+            
+              
+            
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
+              <a class="nav-link active" aria-current="page" href="{{flat.get_absolute_url}}">{{flat.sity}}</a>
             </li>
-              {% endif %}
-              {% endfor %} {% endcomment %}
+            
+            
           </ul>
         </div>
-      </nav>
+      </nav> {% endcomment %}
                 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
            

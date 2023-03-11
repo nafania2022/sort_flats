@@ -10,3 +10,13 @@ class Home(ListView):
     template_name = "flats_publ/home.html"
     context_object_name = "flats"
     
+    
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        context['sityes'] = set([s.sity for s in Flats.objects.all()])
+        
+        return context
+    
+    

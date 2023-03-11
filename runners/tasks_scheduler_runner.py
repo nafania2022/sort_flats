@@ -15,9 +15,8 @@ def parse_all():
         thread = threading.Thread(target=parser.update_with_last_flats)
         thread.start()
 
-parse_all()
-# schedule.every(PARSE_EVERY_MINUTES).minutes.do(parse_all)
+schedule.every(PARSE_EVERY_MINUTES).minutes.do(parse_all)
 
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
